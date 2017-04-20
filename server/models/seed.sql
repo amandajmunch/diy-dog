@@ -8,6 +8,6 @@ CREATE TABLE beers(
   tagline VARCHAR(255)NOT NULL,
   abv INT NOT NULL,
   ibu INT NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
   image_url VARCHAR(255) NOT NULL
   );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import BeerDeets from './BeerDeets';
+// import BeerList from './BeerList';
 import Axios from 'axios';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
   }
 
   getBeers(){
-    Axios.get('http://www.localhost:8080/')
+    Axios.get('http://www.localhost:8080/api')
       .then((response) => {
         this.setState(() => {
           return { beers: response }
@@ -28,19 +29,39 @@ class App extends Component {
       })
   }
 
+  deleteBeer(beerID, e){
+    // e.preventDefault();
+    Axios.delete(`http://localhost:8080/api/${beerID}`)
+      .then(response => {
+        if(response.data.status === "success"){
+          // const beerToRemove = this.state.beers.find(beer => beer.id === beerID);
+          this.setState((prevState) => {
+            const beers = prevState.beers;
+            beers.splice(beers.indexOf(beerID), 1);
+            return {beers: beers}
+          })
+        }
+      })
+      .catch(response => alert('Local Error Deleting'));
+  }
+
+  viewBeer(){
+
+  }
+
   renderBeers(){
-  console.log('beers to be below');
-  console.log(this.state.beers);
+  // console.log('beers to be below');
+  // console.log(this.state.beers);
     if (this.state.beers){
       return this.state.beers.data.map((beer, index) => {
-        return <BeerDeets key={index} beer={beer}/>
+        return <BeerDeets key={index} beer={beer} deleteBeer={this.deleteBeer.bind(this)}/>
       })
     }
   }
 
   render() {
     return (
-      <div className="App">
+      <div className="body">
         <h2>My beer recipes</h2>
         {this.renderBeers()}
       </div>

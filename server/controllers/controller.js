@@ -13,12 +13,12 @@ controller.index = (req, res) => {
 
 controller.create = (req, res) => {
   console.log("Adding to db:", req.body);
-  const name = req.body.Name,
-        tagline = req.body.Tagline,
-        abv = req.body.Abv,
-        ibu = req.body.Ibu,
-        description = req.body.Description,
-        image_url = req.body.Image_url;
+  const name = req.body.name,
+        tagline = req.body.tagline,
+        abv = req.body.abv,
+        ibu = req.body.ibu,
+        description = req.body.description,
+        image_url = req.body.image_url;
 
   Beers
     .create(name,tagline, abv, ibu, description, image_url)
@@ -38,5 +38,18 @@ controller.delete = (req, res) => {
     })
     .catch(err => console.log('ERROR: ', err));
 }
+
+controller.show = (req, res) => {
+    const id = req.params.id;
+    Beers
+        .findById(id)
+        .then((data) => {
+            res.send(data);
+        })
+        .catch(err => console.log('ERROR:', err));
+};
+
+
+
 
 module.exports = controller;

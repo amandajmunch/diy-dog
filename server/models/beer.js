@@ -11,10 +11,10 @@ Beer.findById = (id) => {
   );
 }
 
-Beer.create = (title, year, rated, plot, poster) => {
+Beer.create = (name, tagline, abv, ibu, description, image_url) => {
   return db.one(
-    `INSERT INTO beers (title, year, rated, plot, poster) VALUES ($1, $2, $3, $4, $5) returning id`,
-    [title, year, rated, plot, poster]
+    `INSERT INTO beers (name, tagline, abv, ibu, description, image_url) VALUES ($1, $2, $3, $4, $5, $6) returning id`,
+    [name, tagline, abv, ibu, description, image_url]
   );
 }
 

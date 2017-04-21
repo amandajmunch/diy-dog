@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-// import Result from './Result';
+import Result from './Result';
 
 class BeerDeets extends Component {
    constructor(props){
@@ -13,7 +13,6 @@ class BeerDeets extends Component {
 componentDidMount(){
     this.viewBeer();
   }
-
 
   viewBeer(beerID, e){
     Axios.get(`http://www.localhost:8080/api${this.props.location.pathname}`)
@@ -28,11 +27,19 @@ componentDidMount(){
   };
 
 // http://stackoverflow.com/questions/684672/how-do-i-loop-through-or-enumerate-a-javascript-object
-  showBeer(){
-    Object.entries(this.state.beers).map(([key,value])=>{
-    return (<div>{key} : {value.toString()}</div>);
-    })
-  };
+  // showBeer(){
+  //   Object.entries(this.state.beers).map(([key,value])=>{
+  //   console.log(key + " : " + value);
+  //   })
+  // };
+
+ showBeer(){
+    if(this.state.beers){
+      return (
+        <Result beer={this.state.beers} deleteBeer={this.deleteBeer.bind(this)} />
+      )
+    }
+  }
 
   render(){
     console.log("below are propsss");
@@ -41,9 +48,9 @@ componentDidMount(){
     // console.log(props);
     return(
 
-  <div>
+    <div>
        <h1>test</h1>
-        {this.showBeer()}
+        {this.showBeer.bind(this)}
     </div>
     );
   }

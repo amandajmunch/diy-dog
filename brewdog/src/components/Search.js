@@ -6,7 +6,7 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      beer: {},
+      beers: {},
       search: ""
     }
   }
@@ -17,7 +17,7 @@ class Search extends Component {
 
 // on clicking submit, send the axios call to the API
   handleSubmit(e) {
-    console.log(this.state.beer);
+    console.log(this.state.beers);
     e.preventDefault();
     Axios.get(`https://api.punkapi.com/v2/beers?beer_name=${this.state.search}`)
     .then(response =>{
@@ -56,9 +56,9 @@ class Search extends Component {
 
 // if the state has a name in beer, return the values
   showBeer(){
-    if(this.state.beer.name){
+    if(this.state.beers.name){
       return (
-        <Result beer={this.state.beer} saveBeer={this.saveBeer.bind(this)} />
+        <Result beer={this.state.beers} saveBeer={this.saveBeer.bind(this)} />
       )
     }
   }

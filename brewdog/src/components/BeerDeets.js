@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import Result from './Result';
 
 class BeerDeets extends Component {
    constructor(props){
@@ -18,7 +17,7 @@ componentDidMount(){
     Axios.get(`http://www.localhost:8080/api${this.props.location.pathname}`)
       .then((response) => {
         this.setState(() => {
-          return { beers: response.data }
+          return { beers: response.data };
         })
       })
       .catch(function (error) {
@@ -33,24 +32,45 @@ componentDidMount(){
   //   })
   // };
 
- showBeer(){
-    if(this.state.beers){
-      return (
-        <Result beer={this.state.beers} deleteBeer={this.deleteBeer.bind(this)} />
-      )
-    }
-  }
+// showBeer(){
+//   console.log("beers ====> ", this.state.beers);
+//     if(this.state.beers){
+//       const obj = this.state.beers;
+//       return Object.keys(obj).map(function(beers,index){
+//         return <Render key={index} beer={beers}/>
+//       })
+//       // return this.state.beers.map((beer, index) => {
+//       //   console.log("showBeer", beer);
+//       //    return <Result key={index} beer={this.state.beers} deleteBeer={this.deleteBeer.bind(this)} />
+//       // })
+//     }
+//   }
 
   render(){
     console.log("below are propsss");
+    console.log(this.props);
     console.log(this.state.beers);
     // console.log(this.state.beers.entries(this.state.beers));
     // console.log(props);
     return(
-
     <div>
-       <h1>test</h1>
-        {this.showBeer.bind(this)}
+           <div className="poster">
+            <img src={this.state.beers.image_url} alt="a movie poster" />
+          </div>
+
+          <div className="details">
+            <p>Title: {this.state.beers.name}</p>
+            <p>Year: {this.state.beers.abv}</p>
+            <p>Rated: {this.state.beers.ibu}</p>
+            <p>Runtime: {this.state.beers.tagline}</p>
+            <p>Description:{this.state.beers.description}</p>
+            <div>Primary Malt: {this.state.beers.malt}</div>
+            <div>Primary Hop: {this.state.beers.hops}</div>
+            <div>Food Pairing: {this.state.beers.food_pairing}</div>
+          </div>
+          <div className="button delete"onClick={(e) => this.deleteBeer()}>
+            Delete
+          </div>
     </div>
     );
   }

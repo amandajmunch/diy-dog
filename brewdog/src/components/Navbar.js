@@ -9,7 +9,6 @@ const Navbar = () =>{
             <li><Link to='/'>My Recipes</Link></li>
             <li><Link to='/search'>Search</Link></li>
             <li><Link to='/logout'>Logout</Link></li>
-
         </ul>
       </nav>
     </div>

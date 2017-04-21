@@ -17,7 +17,7 @@ class List extends Component {
   }
 
   getBeers(){
-    Axios.get('http://www.localhost:8080/api')
+    Axios.get('http://www.localhost:8080/api/beers')
       .then((response) => {
         this.setState(() => {
           return { beers: response }
@@ -27,23 +27,21 @@ class List extends Component {
         console.log(error);
       })
   }
-
-// targeting a beer by ID to delete
-  deleteBeer(beerID, e){
-    e.preventDefault();
-    Axios.delete(`http://localhost:8080/api/${beerID}`)
-      .then(response => {
-        if(response.data.status === "success"){
-          const beerToRemove = this.state.beers.find(beer => beer.id === beerID);
+// deleting an individual beer
+ deleteBeer(beer) {
+    if(beer){
+      Axios.delete(`http://www.localhost:8080/api/beers/${beer.id}`)
+        .then((response) => {
           this.setState((prevState) => {
-            const beers = prevState.beers;
-            beers.splice(beers.indexOf(beerID), 1);
-            return {beers: beers}
-          })
-        }
-      })
-      .catch(response => alert('Local Error Deleting'));
+            return {beers: beer}
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
+
 
 // rendering them in key value form
   renderBeers(){
@@ -57,7 +55,6 @@ class List extends Component {
   }
 
   render() {
-    console.log(this.state.beers);
     return (
       <div className="list">
         {this.renderBeers()}

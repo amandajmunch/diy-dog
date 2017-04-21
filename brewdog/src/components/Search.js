@@ -25,7 +25,7 @@ class Search extends Component {
       console.log(response.data[0]);
       // console.log(response.data.Title);
       this.setState({
-        beer: response.data[0]
+        beers: response.data[0]
       });
     })
     .catch(function (error) {
@@ -49,7 +49,7 @@ class Search extends Component {
 
 // upon clicking save, send this beer to the server
   saveBeer(){
-    Axios.post("http://localhost:8080/api", this.state.beer)
+    Axios.post("http://localhost:8080/api/beers", this.state.beers)
       .then(response => this.props.history.push("/"))
       .catch(response => alert("Couldn't save beer"));
   }

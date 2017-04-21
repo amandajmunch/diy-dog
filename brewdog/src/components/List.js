@@ -11,7 +11,7 @@ class List extends Component {
       result: null
     };
   }
-
+// rendering all the beers on page load
   componentDidMount(){
     this.getBeers();
   }
@@ -28,6 +28,7 @@ class List extends Component {
       })
   }
 
+// targeting a beer by ID to delete
   deleteBeer(beerID, e){
     e.preventDefault();
     Axios.delete(`http://localhost:8080/api/${beerID}`)
@@ -44,30 +45,19 @@ class List extends Component {
       .catch(response => alert('Local Error Deleting'));
   }
 
-  viewBeer(beerID, e){
-    const beerToRemove = this.state.beers.find(beer => beer.id === beerID);
-    Axios.get(`http://www.localhost:8080/api/${beerToRemove}`)
-      .then((response) => {
-        // this.setState(() => {
-          return { beers: response }
-        // })
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  };
-
+// rendering them in key value form
   renderBeers(){
   // console.log('beers to be below');
   // console.log(this.state.beers);
     if (this.state.beers){
       return this.state.beers.data.map((beer, index) => {
-        return <ListItem key={index} beer={beer} viewBeer={this.viewBeer.bind(this)} deleteBeer={this.deleteBeer.bind(this)}/>
+        return <ListItem key={index} beer={beer} deleteBeer={this.deleteBeer.bind(this)}/>
       })
     }
   }
 
   render() {
+    console.log(this.state.beers);
     return (
       <div className="list">
         {this.renderBeers()}

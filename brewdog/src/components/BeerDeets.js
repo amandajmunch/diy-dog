@@ -1,20 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Axios from 'axios';
+// import Result from './Result';
 
-const BeerDeets = (props)=> {
-  console.log("below are propsss");
-  console.log(props);
-  if(this.props.beer){
+class BeerDeets extends Component {
+   constructor(props){
+    super(props);
+    this.state = {
+      beers: {}
+    };
+  }
+  // having beer with that ID render on page load
+componentDidMount(){
+    this.viewBeer();
+  }
+
+
+  viewBeer(beerID, e){
+    Axios.get(`http://www.localhost:8080/api${this.props.location.pathname}`)
+      .then((response) => {
+        this.setState(() => {
+          return { beers: response.data }
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  };
+
+// http://stackoverflow.com/questions/684672/how-do-i-loop-through-or-enumerate-a-javascript-object
+  showBeer(){
+    Object.entries(this.state.beers).map(([key,value])=>{
+    return (<div>{key} : {value.toString()}</div>);
+    })
+  };
+
+  render(){
+    console.log("below are propsss");
+    console.log(this.state.beers);
+    // console.log(this.state.beers.entries(this.state.beers));
+    // console.log(props);
     return(
+
   <div>
-        <div> Name: {props.beer.name}</div>
-        <div>Tagline: {props.beer.tagline}</div>
-        <div>ABV: {props.beer.abv}</div>
-        <div>IBU: {props.beer.ibu}</div>
-        <img src={props.beer.image_url} alt="a beer poster"/>
-        <p>{props.beer.description}</p>
-        <button onClick={props.deleteBeer ? (e) => props.deleteBeer(props.beer.id, e) : (e) => props.saveBeer(e)}>
-           {props.beer.id ? "Delete" : "Save"}
-        </button>
+       <h1>test</h1>
+        {this.showBeer()}
     </div>
     );
   }
@@ -22,4 +51,5 @@ const BeerDeets = (props)=> {
 
 
 export default BeerDeets;
+
 

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Result = (props) => {
+  // result render after search
   console.log("result:");
   console.log(props);
   if (props.beer){

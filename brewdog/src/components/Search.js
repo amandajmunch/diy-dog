@@ -15,6 +15,7 @@ class Search extends Component {
     this.setState({search: e.target.value});
   };
 
+// on clicking submit, send the axios call to the API
   handleSubmit(e) {
     console.log(this.state.beer);
     e.preventDefault();
@@ -46,12 +47,14 @@ class Search extends Component {
   //   return beer;
   // }
 
+// upon clicking save, send this beer to the server
   saveBeer(){
     Axios.post("http://localhost:8080/api", this.state.beer)
       .then(response => this.props.history.push("/"))
       .catch(response => alert("Couldn't save beer"));
   }
 
+// if the state has a name in beer, return the values
   showBeer(){
     if(this.state.beer.name){
       return (

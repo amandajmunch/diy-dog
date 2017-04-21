@@ -12,9 +12,12 @@ export default (
       <Navbar />
       <Route exact path='/' component={App} />
       <Route exact path='/search' component={Search}/>
-      <Route exact path='/id' component={BeerDeets} />
+      <Route exact path='/:id' component={BeerDeets} />
       <Footer />
     </div>
   </BrowserRouter>
 );
+
+
+
 

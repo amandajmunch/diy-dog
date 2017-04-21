@@ -9,5 +9,8 @@ CREATE TABLE beers(
   abv INT NOT NULL,
   ibu INT NOT NULL,
   description TEXT NOT NULL,
-  image_url VARCHAR(255) NOT NULL
+  image_url VARCHAR(255) NOT NULL,
+  malt VARCHAR(255) NOT NULL,
+  hops VARCHAR(255) NOT NULL,
+  food_pairing TEXT NOT NULL
   );

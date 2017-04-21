@@ -1,69 +1,77 @@
 import React, { Component } from 'react';
 import '../App.css';
-import BeerDeets from './BeerDeets';
-// import BeerList from './BeerList';
-import Axios from 'axios';
+import List from './List';
+
 
 class App extends Component {
-   constructor(){
+    constructor(){
     super();
     this.state = {
       beers: null,
       result: null
     };
   }
+  // componentDidMount(){
+  //   this.getBeers();
+  // }
 
-  componentDidMount(){
-    this.getBeers();
-  }
+  // getBeers(){
+  //   Axios.get('http://www.localhost:8080/api')
+  //     .then((response) => {
+  //       this.setState(() => {
+  //         return { beers: response }
+  //       })
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     })
+  // }
 
-  getBeers(){
-    Axios.get('http://www.localhost:8080/api')
-      .then((response) => {
-        this.setState(() => {
-          return { beers: response }
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
+  // deleteBeer(beerID, e){
+  //   e.preventDefault();
+  //   Axios.delete(`http://localhost:8080/api/${beerID}`)
+  //     .then(response => {
+  //       if(response.data.status === "success"){
+  //         // const beerToRemove = this.state.beers.find(beer => beer.id === beerID);
+  //         this.setState((prevState) => {
+  //           const beers = prevState.beers;
+  //           beers.splice(beers.indexOf(beerID), 1);
+  //           return {beers: beers}
+  //         })
+  //       }
+  //     })
+  //     .catch(response => alert('Local Error Deleting'));
+  // }
 
-  deleteBeer(beerID, e){
-    // e.preventDefault();
-    Axios.delete(`http://localhost:8080/api/${beerID}`)
-      .then(response => {
-        if(response.data.status === "success"){
-          // const beerToRemove = this.state.beers.find(beer => beer.id === beerID);
-          this.setState((prevState) => {
-            const beers = prevState.beers;
-            beers.splice(beers.indexOf(beerID), 1);
-            return {beers: beers}
-          })
-        }
-      })
-      .catch(response => alert('Local Error Deleting'));
-  }
+  // viewBeer(){
+  //   Axios.get('http://www.localhost:8080/api/:id')
+  //     .then((response) => {
+  //       this.setState(() => {
+  //         return { beers: response }
+  //       })
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     })
+  // };
 
-  viewBeer(){
-
-  }
-
-  renderBeers(){
-  // console.log('beers to be below');
-  // console.log(this.state.beers);
-    if (this.state.beers){
-      return this.state.beers.data.map((beer, index) => {
-        return <BeerDeets key={index} beer={beer} deleteBeer={this.deleteBeer.bind(this)}/>
-      })
-    }
-  }
+  // renderBeers(){
+  // // console.log('beers to be below');
+  // // console.log(this.state.beers);
+  //   if (this.state.beers){
+  //     return this.state.beers.data.map((beer, index) => {
+  //       return <BeerDeets key={index} beer={beer} onClick={(e)=>this.viewBeer.bind(this)} deleteBeer={this.deleteBeer.bind(this)}/>
+  //     })
+  //   }
+  // }
 
   render() {
     return (
       <div className="body">
         <h2>My beer recipes</h2>
-        {this.renderBeers()}
+        <List />
+      {/*BeerList Component*/}
+    {/* pass iside of beerlist renderBeers viewBeers*/}
       </div>
     );
   }

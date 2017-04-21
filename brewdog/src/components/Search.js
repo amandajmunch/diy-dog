@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import BeerDeets from './BeerDeets';
-// import { Redirect } from 'react-router';
+import Result from './Result';
 
 class Search extends Component {
   constructor() {
@@ -34,18 +33,18 @@ class Search extends Component {
 }
 
 
-   beerData(beerDatas){
-    const beer = {};
+  //  beerData(beerDatas){
+  //   const beer = {};
 
-    beer.name = beerDatas.name;
-    beer.image_url = beerDatas.image_url;
-    beer.abv = beerDatas.abv;
-    beer.ibu = beerDatas.ibu;
-    beer.description = beerDatas.description;
-    beer.tagline = beerDatas.tagline;
+  //   beer.name = beerDatas.name;
+  //   beer.image_url = beerDatas.image_url;
+  //   beer.abv = beerDatas.abv;
+  //   beer.ibu = beerDatas.ibu;
+  //   beer.description = beerDatas.description;
+  //   beer.tagline = beerDatas.tagline;
 
-    return beer;
-  }
+  //   return beer;
+  // }
 
   saveBeer(){
     Axios.post("http://localhost:8080/api", this.state.beer)
@@ -56,7 +55,7 @@ class Search extends Component {
   showBeer(){
     if(this.state.beer.name){
       return (
-        <BeerDeets beer={this.state.beer} saveBeer={this.saveBeer.bind(this)} />
+        <Result beer={this.state.beer} saveBeer={this.saveBeer.bind(this)} />
       )
     }
   }

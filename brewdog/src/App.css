@@ -1,6 +1,7 @@
 .app{
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .nav ul{
@@ -22,4 +23,6 @@
 
 .footer{
   margin: 1vh;
+  display: flex;
+  align-content: flex-end;
 }

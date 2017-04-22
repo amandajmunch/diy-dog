@@ -15,7 +15,7 @@ class List extends Component {
   componentDidMount(){
     this.getBeers();
   }
-
+// axios call to the server to grab all the beers
   getBeers(){
     Axios.get('http://www.localhost:8080/api/beers')
       .then((response) => {
@@ -27,26 +27,23 @@ class List extends Component {
         console.log(error);
       })
   }
+
 // deleting an individual beer
  deleteBeer(beer) {
+  //console.log('deleteBeer', beer)
     if(beer){
       Axios.delete(`http://www.localhost:8080/api/beers/${beer.id}`)
         .then((response) => {
-          this.setState((prevState) => {
-            return {beers: beer}
-          });
-        })
+          this.getBeers();
+          })
         .catch(function (error) {
           console.log(error);
         });
     }
   }
 
-
 // rendering them in key value form
   renderBeers(){
-  // console.log('beers to be below');
-  // console.log(this.state.beers);
     if (this.state.beers){
       return this.state.beers.data.map((beer, index) => {
         return <ListItem key={index} beer={beer} deleteBeer={this.deleteBeer.bind(this)}/>
@@ -58,8 +55,6 @@ class List extends Component {
     return (
       <div className="list">
         {this.renderBeers()}
-      {/*BeerList Component*/}
-    {/* pass iside of beerlist renderBeers viewBeers*/}
       </div>
     );
   }

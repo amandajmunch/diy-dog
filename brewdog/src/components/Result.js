@@ -2,16 +2,10 @@ import React from 'react';
 
 const Result = (props) => {
   // result render after search
-  console.log("result:");
-  console.log(props);
   if (props.beer){
     return(
-      <div className="beer-container">
-        <div className="beer">
-          <div className="poster">
-            <img src={props.beer.image_url} alt="a movie poster" />
-          </div>
-
+      <div className="result">
+          <img src={props.beer.image_url} alt="a movie poster" />
           <div className="details">
             <p>Title: {props.beer.name}</p>
             <p>Year: {props.beer.abv}</p>
@@ -22,20 +16,16 @@ const Result = (props) => {
             <div>Primary Hop: {props.beer.ingredients.hops[0].name}</div>
             <div>Food Pairing: {props.beer.food_pairing}</div>
           </div>
-        </div>
 
         <div className="save">
-          <button
-            className="button"
-            onClick={(e) => props.saveBeer()}
-          >
-          Save
+          <button className="button" onClick={(e) => props.saveBeer()}>
+            Save
           </button>
         </div>
       </div>
     )
   } else {
-    return <div className="beer-container"><p>Search for a beer using the form above!</p></div>
+    return <div><p>Search for a beer using the form above!</p></div>
   }
 }
 

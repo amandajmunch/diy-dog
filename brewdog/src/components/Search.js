@@ -11,6 +11,7 @@ class Search extends Component {
     }
   }
 
+// change state of search
   handleChange(e) {
     this.setState({search: e.target.value});
   };
@@ -33,20 +34,6 @@ class Search extends Component {
     })
 }
 
-
-  //  beerData(beerDatas){
-  //   const beer = {};
-
-  //   beer.name = beerDatas.name;
-  //   beer.image_url = beerDatas.image_url;
-  //   beer.abv = beerDatas.abv;
-  //   beer.ibu = beerDatas.ibu;
-  //   beer.description = beerDatas.description;
-  //   beer.tagline = beerDatas.tagline;
-
-  //   return beer;
-  // }
-
 // upon clicking save, send this beer to the server
   saveBeer(){
     Axios.post("http://localhost:8080/api/beers", this.state.beers)
@@ -63,16 +50,13 @@ class Search extends Component {
     }
   }
 
-
   render() {
-     // console.log(this.state.beer);
-     // console.log(this.state.search);
     return(
     <div className="search">
       <form onSubmit={this.handleSubmit.bind(this)}>
         <label>
            Name:
-          <input type="text"
+          <input type="text" className="searchbar"
            value={this.state.search}
            onChange={this.handleChange.bind(this)}/>
         </label>

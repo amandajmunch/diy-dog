@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Image = (props) => {
   // have just title and delete button available per recipe
-  console.log(props.beer)
+  console.log("an image:", props.image)
   return(
     <div className="Image">
       <img src={props.image.name}/>

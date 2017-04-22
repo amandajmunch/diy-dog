@@ -44,7 +44,7 @@ class List extends Component {
 
 // rendering them in key value form
   renderBeers(){
-    if (this.state.beers){
+    if(this.state.beers){
       return this.state.beers.data.map((beer, index) => {
         return <ListItem key={index} beer={beer} deleteBeer={this.deleteBeer.bind(this)}/>
       })

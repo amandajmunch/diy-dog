@@ -12,6 +12,7 @@ controller.index = (req, res) => {
 }
 
 controller.create = (req, res) => {
+
   console.log("Adding to db:", req.body);
   const name = req.body.name;
 

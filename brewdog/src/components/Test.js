@@ -16,7 +16,7 @@ export default class Test extends React.Component {
     this.state = {
       uploadedFile: null,
       uploadedFileCloudinaryUrl: '',
-      images: []
+      images: ''
     };
   }
 
@@ -80,7 +80,7 @@ handleImageUpload(file) {
   renderImages(){
     if(this.state.images){
       return this.state.images.data.map((image, index) => {
-        return <Image key={index} image={image} deleteBeer={this.deleteImage.bind(this)}/>
+        return <Image key={index} image={image} deleteImage={this.deleteImage.bind(this)}/>
       })
     }
   };
@@ -88,12 +88,13 @@ handleImageUpload(file) {
 
 // upon clicking save, send this beer to the server
   saveImage(){
-    Axios.post("http://localhost:8080/api/images", this.state.uploadedFileCloudinaryUrl)
+    let image = {name: this.state.uploadedFileCloudinaryUrl}
+    Axios.post("http://localhost:8080/api/images", image)
       .then(response => {
-        this.props.history.push("/");
+        this.props.history.push("/gallery");
         console.log("image click");
       })
-      .catch(response => alert("Couldn't save beer"));
+      .catch(response => alert("Couldn't save image"));
   }
 
 // if the state has a name in beer, return the values
@@ -125,7 +126,7 @@ handleImageUpload(file) {
           </button>
         </div>
       <div className="imageList">
-        {this.renderImages}
+        {this.renderImages()}
       </div>
     </div>
     )

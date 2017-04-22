@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import Result from './Result';
 
+
 class Search extends Component {
   constructor() {
     super();

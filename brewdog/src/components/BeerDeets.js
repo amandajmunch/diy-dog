@@ -37,11 +37,11 @@ componentDidMount(){
            <img src={this.state.beers.image_url} alt="a movie poster" />
 
           <div className="details">
-            <p>Title: {this.state.beers.name}</p>
-            <p>Year: {this.state.beers.abv}</p>
-            <p>Rated: {this.state.beers.ibu}</p>
-            <p>Runtime: {this.state.beers.tagline}</p>
-            <p>Description:{this.state.beers.description}</p>
+            <p>Name: {this.state.beers.name}</p>
+            <p>ABV: {this.state.beers.abv}</p>
+            <p>IBU: {this.state.beers.ibu}</p>
+            <p>Tagline: {this.state.beers.tagline}</p>
+            <p>{this.state.beers.description}</p>
             <div>Primary Malt: {this.state.beers.malt}</div>
             <div>Primary Hop: {this.state.beers.hops}</div>
             <div>Food Pairing: {this.state.beers.food_pairing}</div>

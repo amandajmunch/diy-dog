@@ -33,7 +33,7 @@
 }
 
 img {
-  width: 80px;
+  width: 120px;
 }
 
 .BeerDeets {
@@ -70,4 +70,8 @@ p a {
   text-decoration: none;
   color: black;
   border-bottom: 1px solid black;
+}
+
+.images{
+  height: 100vh;
 }

@@ -4,6 +4,7 @@ import App from './components/App';
 import Search from './components/Search';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Test from './components/Test';
 import BeerDeets from './components/BeerDeets';
 
 export default (
@@ -13,6 +14,7 @@ export default (
       <Route exact path='/' component={App} />
       <Route exact path='/beers/:id' component={BeerDeets} />
       <Route exact path='/search' component={Search} />
+      <Route exact path='/gallery' component={Test}/>
       <Footer />
     </div>
   </BrowserRouter>

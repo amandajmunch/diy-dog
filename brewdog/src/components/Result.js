@@ -7,9 +7,9 @@ const Result = (props) => {
       <div className="result">
           <img src={props.beer.image_url} alt="a movie poster" />
           <div className="details">
-            <p>Title: {props.beer.name}</p>
-            <p>Year: {props.beer.abv}</p>
-            <p>Rated: {props.beer.ibu}</p>
+            <p>Name: {props.beer.name}</p>
+            <p>ABV: {props.beer.abv}</p>
+            <p>IBU: {props.beer.ibu}</p>
             <p>Runtime: {props.beer.tagline}</p>
             <p>{props.beer.description}</p>
             <div>Primary Malt: {props.beer.ingredients.malt[0].name}</div>

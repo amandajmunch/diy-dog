@@ -6,7 +6,9 @@ const ListItem = (props) => {
   console.log(props.beer)
   return(
     <div className="listItem">
-      <p><Link to={'/beers/'+ props.beer.id}>{props.beer.name}</Link></p>
+      <h3>{props.beer.name}</h3>
+      <Link to={'/beers/'+ props.beer.id}><img src={props.beer.image_url} alt=""/></Link>
+      <br/>
       <button className="button" onClick={(e) => props.deleteBeer(props.beer)}>
          Delete
       </button>

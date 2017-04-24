@@ -4,10 +4,10 @@ const Image = {};
 
 Image.findAll = () => db.manyOrNone('SELECT * FROM images');
 
-Image.create = (name) => {
+Image.create = (name,content) => {
   return db.one(
-    `INSERT INTO images (name) VALUES ($1) returning id`,
-    [name]
+    `INSERT INTO images (name, content) VALUES ($1, $2) returning id`,
+    [name, content]
   );
 }
 

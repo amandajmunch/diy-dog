@@ -4,21 +4,48 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  margin: 2vh;
   font-family: 'Lato';
+  overflow: scroll;
+}
+
+.app h2{
+  display: flex;
+  justify-content: center;
+  font-size: 4vh;
+}
+
+.logo{
+  height: 26px;
+  /*width: 40px;*/
+  align-self: flex-start;
+}
+
+nav {
+  border-bottom: 1px solid #ec3700;
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
 }
 
 .nav ul{
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 4vh;
+  justify-content: flex-start;
+  /*margin: 4vh;*/
+  width: 100%;
 }
 
 .nav a{
   text-decoration: none;
   color: black;
+  margin: 2vh;
+}
+
+nav a:hover{
+  font-weight: bolder;
 }
 
 .body{
@@ -38,17 +65,35 @@ img {
 
 .BeerDeets {
   margin: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
 }
 
 .result {
-  padding-top: 2vh;
+  /*padding-top: 2vh;*/
+  margin: 2vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.button{
+.details {
+  margin: 2vh;
+}
+
+.logout{
+  margin-left: auto;
+  margin-right: 2vh;
+}
+
+.button {
   border: none;
   background-color: white;
   font-size: 14px;
   outline: none;
+  border-bottom: 1px solid black !important;
 }
 
 input{
@@ -64,9 +109,12 @@ input{
 
 .search {
   height: 100vh;
+  padding-top: 4vh;
+  padding-left: 2vh;
+  border-bottom: none !important;
 }
 
-p a {
+ p a {
   text-decoration: none;
   color: black;
   border-bottom: 1px solid black;
@@ -74,4 +122,74 @@ p a {
 
 .images{
   height: 100vh;
+  overflow: scroll;
+  padding-top: 4vh;
+  padding-left: 2vh;
+}
+
+.imageList{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Image{
+  padding: 3vh;
+}
+
+.dragImage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save{
+  padding-top: 2vh;
+}
+.list {
+  padding-left: 2vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h2 {
+  padding-left: 2vh;
+}
+
+.searchIcon{
+  height: 26px;
+  width: 26px;
+  border-bottom: none !important;
+}
+
+.listItem{
+  width: 35vh;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  padding: 2vh;
+}
+
+footer li{
+  list-style-type: none;
+  margin-left: 2vh;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.listy{
+  margin: 2vh;
 }

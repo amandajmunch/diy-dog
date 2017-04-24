@@ -12,12 +12,14 @@ CREATE TABLE beers(
   image_url VARCHAR(255) NOT NULL,
   malt VARCHAR(255) NOT NULL,
   hops VARCHAR(255) NOT NULL,
-  food_pairing TEXT NOT NULL
+  food_pairing TEXT NOT NULL,
+  brewers_tips TEXT NOT NULL
   );
 
 DROP TABLE IF EXISTS images CASCADE;
 
 CREATE TABLE images(
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  content VARCHAR(255) NOT NULL
   );

@@ -12,11 +12,11 @@ const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dh8irzhgb/image/u
 export default class Test extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       uploadedFile: null,
       uploadedFileCloudinaryUrl: '',
-      images: ''
+      images: '',
+      input: ''
     };
   }
 
@@ -81,17 +81,23 @@ handleImageUpload(file) {
     if(this.state.images){
       return this.state.images.data.map((image, index) => {
         return <Image key={index} image={image} deleteImage={this.deleteImage.bind(this)}/>
-      })
+
+      });
     }
+  };
+
+  handleChange(e) {
+    this.setState({input: e.target.value});
   };
 
 
 // upon clicking save, send this beer to the server
   saveImage(){
-    let image = {name: this.state.uploadedFileCloudinaryUrl}
+    let image = {name: this.state.uploadedFileCloudinaryUrl, content: this.state.input}
     Axios.post("http://localhost:8080/api/images", image)
       .then(response => {
-        this.props.history.push("/gallery");
+        // this.props.history.push("/gallery");
+        window.location.reload();
         console.log("image click");
       })
       .catch(response => alert("Couldn't save image"));
@@ -105,29 +111,37 @@ handleImageUpload(file) {
 
     return(
     <div className="images">
-     <div className="FileUpload">
-        <Dropzone
-          multiple={false}
-          accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}>
-          <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone>
-    </div>
+      <div className="dragImage">
+       <div className="FileUpload">
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <p>Drop an image or click to select a file to upload.</p>
+          </Dropzone>
+      </div>
 
-    <div>
-        {this.state.uploadedFileCloudinaryUrl === '' ? null :
-        <div className="userPic">
-          <img src={this.state.uploadedFileCloudinaryUrl} alt="failed"/>
-        </div>}
-      </div>
-      <div className="save">
-          <button className="button" onClick={(e) => this.saveImage()}>
-            Save
-          </button>
+        <div>
+          {this.state.uploadedFileCloudinaryUrl === '' ? null :
+          <div className="userPic">
+            <img src={this.state.uploadedFileCloudinaryUrl} alt="failed"/>
+          </div>}
         </div>
-      <div className="imageList">
-        {this.renderImages()}
-      </div>
+          <div className={this.state.uploadedFileCloudinaryUrl ? "show" : "hide"}>
+            <form onSubmit={this.saveImage.bind(this)}>
+                <label>
+                  Comment:
+                <input type="text"
+                    value={this.state.input} placeholder="Insert text here"
+                    onChange={this.handleChange.bind(this)}/>
+                </label>
+                <input type="submit" value="Save"/>
+            </form>
+            </div>
+        </div>
+        <div className="imageList">
+          {this.renderImages()}
+        </div>
     </div>
     )
   }

@@ -15,9 +15,10 @@ controller.create = (req, res) => {
 
   console.log("Adding to db:", req.body);
   const name = req.body.name;
+  const content = req.body.content;
 
   Images
-    .create(name)
+    .create(name, content)
     .then((data) => {
       res.json(data);
     })

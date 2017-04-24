@@ -21,10 +21,11 @@ controller.create = (req, res) => {
         image_url = req.body.image_url,
         malt = req.body.ingredients.malt[0].name,
         hops = req.body.ingredients.hops[0].name,
-        food_pairing = req.body.food_pairing;
+        food_pairing = req.body.food_pairing,
+        brewers_tips= req.body.brewers_tips;
 
   Beers
-    .create(name,tagline, abv, ibu, description, image_url, malt, hops, food_pairing)
+    .create(name,tagline, abv, ibu, description, image_url, malt, hops, food_pairing, brewers_tips)
     .then((data) => {
       res.json(data);
     })

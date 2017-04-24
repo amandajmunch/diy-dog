@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
 import ListItem from './ListItem';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import Search from '../search.png';
 
 class List extends Component {
    constructor(){
@@ -53,8 +55,14 @@ class List extends Component {
 
   render() {
     return (
-      <div className="list">
-        {this.renderBeers()}
+      <div className="listy">
+        <div className="searchIcon">
+          <p><Link to='/search' className="searchIcon"><img src={Search} alt="search" className="searchIcon"/></Link></p>
+          <br/>
+        </div>
+        <div className="list">
+          {this.renderBeers()}
+        </div>
       </div>
     );
   }

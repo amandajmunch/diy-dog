@@ -1,15 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Image = (props) => {
   // have just title and delete button available per recipe
-  console.log("an image:", props.image)
+  console.log("an image:", props.image);
+  console.log("props", props);
   return(
     <div className="Image">
-      <img src={props.image.name}/>
+      <br/>
+
+      <img src={props.image.name} alt=""/>
+       <br/>
+       <p>Beer: {props.image.content}</p>
       <button className="button" onClick={(e) => props.deleteImage(props.image)}>
          Delete
       </button>
+      <br/>
+      <br/>
     </div>
    )
 }

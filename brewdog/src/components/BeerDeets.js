@@ -45,11 +45,11 @@ componentDidMount(){
             <div>Primary Malt: {this.state.beers.malt}</div>
             <div>Primary Hop: {this.state.beers.hops}</div>
             <div>Food Pairing: {this.state.beers.food_pairing}</div>
+            <br/>
+            <div>Brewer's Tips: {this.state.beers.brewers_tips}</div>
           </div>
           <br/>
-          <button className="button delete"onClick={(e) => this.deleteBeer()}>
-            Delete
-          </button>
+
     </div>
     );
   }

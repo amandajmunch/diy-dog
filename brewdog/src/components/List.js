@@ -19,7 +19,7 @@ class List extends Component {
   }
 // axios call to the server to grab all the beers
   getBeers(){
-    Axios.get('http://www.localhost:8080/api/beers')
+    Axios.get('https://pacific-springs-26484.herokuapp.com/api/beers')
       .then((response) => {
         this.setState(() => {
           return { beers: response }

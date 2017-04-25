@@ -13,6 +13,7 @@ export default (
     <div className="app">
       <Navbar />
       <Route exact path='/' component={App} />
+      <Route exact path='/login' component={Login} />
       <Route exact path='/beers/:id' component={BeerDeets} />
       <Route exact path='/search' component={Search}/>
       <Route exact path='/gallery' component={Test}/>

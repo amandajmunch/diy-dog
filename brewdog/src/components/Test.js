@@ -67,7 +67,7 @@ handleImageUpload(file) {
 // deleting an individual iamge
  deleteImage(image) {
     if(image){
-      Axios.delete(`http://www.localhost:8080/api/images/${image.id}`)
+      Axios.delete(`https://pacific-springs-26484.herokuapp.com/api/images/${image.id}`)
         .then((response) => {
           this.getImages();
           })

@@ -4,13 +4,13 @@ import Axios from 'axios';
 
 class Login extends React.Component{
 
-  constructor (props, context) {
-    super(props, context);
-  }
+  // constructor (props, context) {
+  //   super(props, context);
+  // }
 
   responseFacebook (response) {
     console.log(response);
-     Axios.post("http://localhost:8080/api/users", response)
+     Axios.post("https://pacific-springs-26484.herokuapp.com/api/users", response)
       .then(response => this.props.history.push("/"))
       .catch(response => alert("Couldn't save user"));
   }

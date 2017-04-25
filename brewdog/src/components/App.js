@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import List from './List';
-
+import Logo from '../logo2.png';
 
 class App extends Component {
     constructor(){
@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h2>My BrewDog Recipes</h2>
+
         <List />
       </div>
     );

@@ -10,7 +10,7 @@ const Image = (props) => {
 
       <img src={props.image.name} alt="" className="imageUpload" id="myImg" onClick={function(){
           var modal = document.getElementById('myModal');
-          var img = document.getElementById('myImg');
+          // var img = document.getElementById('myImg');
           var modalImg = document.getElementById("img01");
           modal.style.display = "block";
           modalImg.src = props.image.name;}}
@@ -30,7 +30,7 @@ const Image = (props) => {
         }}>&times;</span>
 
         // Modal Content (The Image)
-        <img className="modal-content" id="img01"/>
+        <img className="modal-content" id="img01" alt=""/>
       </div>
       <br/>
       <br/>

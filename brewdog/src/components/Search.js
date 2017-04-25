@@ -37,7 +37,7 @@ class Search extends Component {
 
 // upon clicking save, send this beer to the server
   saveBeer(){
-    Axios.post("http://localhost:8080/api/beers", this.state.beers)
+    Axios.post("https://pacific-springs-26484.herokuapp.com/api/beers", this.state.beers)
       .then(response => this.props.history.push("/"))
       .catch(response => alert("Couldn't save beer"));
   }

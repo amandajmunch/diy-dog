@@ -15,7 +15,7 @@ componentDidMount(){
 
 // show individual beer from server
   viewBeer(beerID, e){
-    Axios.get(`http://www.localhost:8080/api${this.props.location.pathname}`)
+    Axios.get(`https://pacific-springs-26484.herokuapp.com/api${this.props.location.pathname}`)
       .then((response) => {
         this.setState(() => {
           return { beers: response.data };
@@ -34,7 +34,7 @@ componentDidMount(){
     // console.log(props);
     return(
     <div className="BeerDeets">
-           <img src={this.state.beers.image_url} alt="a movie poster" />
+           <img src={this.state.beers.image_url} alt="a movie poster" className="beerImage" />
 
           <div className="details">
             <p>Name: {this.state.beers.name}</p>

@@ -8,59 +8,45 @@ const flash = require('connect-flash');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const fbConfig = require('./config/fb.js');
-
+const configAuth = require('./config/fb');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(cors());
 app.use(require('./router'));
 
-passport.use('facebook', new FacebookStrategy({
-  clientID        : fbConfig.appID,
-  clientSecret    : fbConfig.appSecret,
-  callbackURL     : fbConfig.callbackUrl
-},
+app.use(passport.initialize());
 
-  // facebook will send back the tokens and profile
-  function(access_token, refresh_token, profile, done) {
-    // asynchronous
-    process.nextTick(function() {
+app.use(passport.session());
 
-      // find the user in the database based on their facebook id
-      User.findOne({ 'id' : profile.id }, function(err, user) {
+app.use(cookieParser());
 
-        // if there is an error, stop everything and return that
-        // ie an error connecting to the database
-        if (err)
-          return done(err);
+app.use(flash());
 
-          // if the user is found, then log them in
-          if (user) {
-            return done(null, user); // user found, return that user
-          } else {
-            // if there is no user found with that facebook id, create them
-            var newUser = new User();
+const User = require('./models/users');
 
-            // set all of the facebook information in our user model
-            newUser.fb.id    = profile.id; // set the users facebook id
-            newUser.fb.access_token = access_token; // we will save the token that facebook provides to the user
-            newUser.fb.firstName  = profile.name.givenName;
-            newUser.fb.lastName = profile.name.familyName; // look at the passport user profile to see how names are returned
-            newUser.fb.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+passport.deserializeUser((userObj, done) => {
+  console.log(userObj);
 
-            // save our user to the database
-            newUser.save(function(err) {
-              if (err)
-                throw err;
 
-              // if successful, return the new user
-              return done(null, newUser);
-            });
-         }
-      });
-    });
-}));
+});
+
+// passport.use(new FacebookStrategy({
+//     clientID: configAuth.facebook.clientID,
+//     clientSecret: configAuth.facebook.clientSecret,
+//     callbackURL: configAuth.facebook.callbackURL
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//      User
+//     .findByEmail(userObj.email)
+//     .then((user) => done(null, user))
+//     .catch((err) => {
+//       console.log('ERROR:', err);
+//       return done(null, false);
+//     });
+//   }
+// ));
+
 
 const PORT = process.env.PORT || 8080;
 

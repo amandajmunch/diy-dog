@@ -1,29 +1,29 @@
 const db = require('../config/db');
-const bcrypt = require('bcrypt');
 
 const User = {};
 
-// creates a new user
-User.create = (user) => {
-  const password = bcrypt.hashSync(user.password, 10);
+User.findAll = () => db.manyOrNone('SELECT * FROM users');
 
+// creates a new user
+User.create = (name,email,accessToken) => {
+  // const accessToken = bcrypt.hashSync(user.accessToken, 10);
   return db.oneOrNone(`
     INSERT INTO users
-    (name, password)
+    (name, email, accessToken)
     VALUES
-    ($1, $2)
+    ($1, $2, $3)
     RETURNING *;`,
-    [ user.name, password ]
+    [name, email, accessToken]
   );
 };
 
-// finds a user by their name
-User.findByName = (name) => {
+// finds a user by their email
+User.findByEmail = (email) => {
   return db.oneOrNone(`
     SELECT *
     FROM users
-    WHERE name = $1;`,
-    [name]
+    WHERE email = $1;`,
+    [email]
   );
 };
 

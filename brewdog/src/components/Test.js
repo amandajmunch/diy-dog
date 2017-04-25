@@ -16,7 +16,8 @@ export default class Test extends React.Component {
       uploadedFile: null,
       uploadedFileCloudinaryUrl: '',
       images: '',
-      input: ''
+      input: '',
+      isModalOpen: false
     };
   }
 
@@ -90,6 +91,22 @@ handleImageUpload(file) {
     this.setState({input: e.target.value});
   };
 
+  makeModal(props){
+    console.log("hi");
+  // "document.getElementById('myModal').style.display='none'"&times;
+ };
+
+
+  openModal() {
+    this.setState({ isModalOpen: true })
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false })
+  }
+
+// Get the <span> element that closes the modal
+
 
 // upon clicking save, send this beer to the server
   saveImage(){
@@ -117,14 +134,14 @@ handleImageUpload(file) {
             multiple={false}
             accept="image/*"
             onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
+            <p className="p">Drop an image or click to select a file to upload.</p>
           </Dropzone>
       </div>
 
         <div>
           {this.state.uploadedFileCloudinaryUrl === '' ? null :
           <div className="userPic">
-            <img src={this.state.uploadedFileCloudinaryUrl} alt="failed"/>
+            <img src={this.state.uploadedFileCloudinaryUrl} alt="failed" className="imageUpload"/>
           </div>}
         </div>
           <div className={this.state.uploadedFileCloudinaryUrl ? "show" : "hide"}>

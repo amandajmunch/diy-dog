@@ -7,7 +7,7 @@ const Result = (props) => {
     return(
       <div>
       <div className="result">
-          <img src={props.beer.image_url} alt="a beer pic" />
+          <img src={props.beer.image_url} alt="a beer pic" className="beerImage"/>
           <div className="details">
             <p>Name: {props.beer.name}</p>
             <p>ABV: {props.beer.abv}</p>

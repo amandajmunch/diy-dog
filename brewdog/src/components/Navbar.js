@@ -12,7 +12,7 @@ const Navbar = () =>{
             <li><Link to='/'>My Recipes</Link></li>
             <li><Link to='/gallery'>My Images</Link></li>
             <li><Link to='/search'><img src={Search} className="searchIcon" alt=""/></Link></li>
-            <li className="logout"><Link to='/search'>Logout</Link></li>
+
         </ul>
       </nav>
     </div>

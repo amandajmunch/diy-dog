@@ -7,7 +7,7 @@ const ListItem = (props) => {
   return(
     <div className="listItem">
       <h3>{props.beer.name}</h3>
-      <Link to={'/beers/'+ props.beer.id}><img src={props.beer.image_url} alt=""/></Link>
+      <Link to={'/beers/'+ props.beer.id}><img src={props.beer.image_url} alt="" className="beerImage"/></Link>
       <br/>
       <button className="button" onClick={(e) => props.deleteBeer(props.beer)}>
          Delete

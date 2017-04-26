@@ -34,7 +34,7 @@ class List extends Component {
  deleteBeer(beer) {
   //console.log('deleteBeer', beer)
     if(beer){
-      Axios.delete(`http://www.localhost:8080/api/beers/${beer.id}`)
+      Axios.delete(`https://pacific-springs-26484.herokuapp.com/api/beers/${beer.id}`)
         .then((response) => {
           this.getBeers();
           })

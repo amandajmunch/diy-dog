@@ -14,7 +14,7 @@ const Navbar = () =>{
             <li><Link to='/gallery'>IMAGES</Link></li>
             <li><Link to='/search'><img src={Search} className="searchIcon" alt=""/></Link></li>
             <li className="title">DIY DOG</li>
-            <li className="logout"><Link to='/' onClick={(e)=>"FB.logout()"}>LOGOUT</Link></li>
+          {/*  <li className="logout"><Link to='/' onClick={(e)=>"FB.logout()"}>LOGOUT</Link></li> */}
         </ul>
       </nav>
     </div>

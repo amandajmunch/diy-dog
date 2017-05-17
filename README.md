@@ -1,6 +1,6 @@
 ### DIY DOG
 
-TBD
+Search for BrewDog recipes through the BrewDog API and save them to your recipe book. Use the image uploader in the gallery to upload an image of your final product. 
 
 ---
 ### Pages
@@ -18,15 +18,6 @@ TBD
 * Node, Express
 * BrewDog API
 
----
-### Approach Taken
-
-**
-
----
-### Installation Instructions
-
-** 
 
 
 
